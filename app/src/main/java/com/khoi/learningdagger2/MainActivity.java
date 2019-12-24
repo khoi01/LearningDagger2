@@ -13,6 +13,9 @@ import com.khoi.learningdagger2.Field.RobotComponent;
 import com.khoi.learningdagger2.Method.Creature;
 import com.khoi.learningdagger2.Method.CreatureComponent;
 import com.khoi.learningdagger2.Method.DaggerCreatureComponent;
+import com.khoi.learningdagger2.ModuleAndProvider.DaggerLaptopComponent;
+import com.khoi.learningdagger2.ModuleAndProvider.Laptop;
+import com.khoi.learningdagger2.ModuleAndProvider.LaptopComponent;
 
 import javax.inject.Inject;
 
@@ -21,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     @Inject Robot robot;
     private Car car;
     private Creature creature;
-
+    private Laptop laptop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         applyConstructorInjection();
         applyFieldInjection();
         applyMethodInjection();
+        applyModuleAndProvider();
     }
 
 
@@ -51,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
     public void applyMethodInjection(){
         CreatureComponent component = DaggerCreatureComponent.create();
         creature = component.Init();
+    }
+
+    public void applyModuleAndProvider(){
+        LaptopComponent component = DaggerLaptopComponent.create();
+        laptop = component.Init();
     }
 
 
